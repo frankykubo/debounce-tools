@@ -1,0 +1,29 @@
+{
+  "name": "debounce-tools",
+  "version": "1.0.0",
+  "description": "Lightweight debounce functions that will make your live easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankykubo/debounce-tools.git"
+  },
+  "keywords": [
+    "debounce",
+    "typescript",
+    "javascript",
+    "promises",
+    "es2022"
+  ],
+  "author": "frankykubo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frankykubo/debounce-tools/issues"
+  },
+  "homepage": "https://github.com/frankykubo/debounce-tools#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
