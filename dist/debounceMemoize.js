@@ -1,4 +1,7 @@
-export const debounceMemoize = (func, waitFor) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.debounceMemoize = void 0;
+const debounceMemoize = (func, waitFor) => {
     let timeout;
     let prevCallbackArgs = [];
     return (...args) => new Promise(resolve => {
@@ -13,3 +16,4 @@ export const debounceMemoize = (func, waitFor) => {
         }, waitFor);
     });
 };
+exports.debounceMemoize = debounceMemoize;
