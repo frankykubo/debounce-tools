@@ -1,5 +1,5 @@
 {
-  "name": "debounce-tools",
+  "name": "@frankykubo/debounce-tools",
   "version": "1.0.0",
   "description": "Lightweight debounce functions that will make your live easier.",
   "main": "index.js",
