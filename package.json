@@ -26,5 +26,8 @@
   "homepage": "https://github.com/frankykubo/debounce-tools#readme",
   "devDependencies": {
     "typescript": "^4.9.5"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
