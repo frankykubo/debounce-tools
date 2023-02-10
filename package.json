@@ -24,6 +24,7 @@
     "url": "https://github.com/frankykubo/debounce-tools/issues"
   },
   "homepage": "https://github.com/frankykubo/debounce-tools#readme",
+  "type": "module",
   "devDependencies": {
     "typescript": "^4.9.5"
   }
