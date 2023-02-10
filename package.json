@@ -1,6 +1,6 @@
 {
   "name": "@frankykubo/debounce-tools",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Lightweight debounce functions that will make your live easier.",
   "main": "index.js",
   "scripts": {
