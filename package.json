@@ -1,6 +1,6 @@
 {
   "name": "@frankykubo/debounce-tools",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Lightweight debounce functions that will make your live easier.",
   "main": "dist/index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/frankykubo/debounce-tools#readme",
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "typescript": "^5.3.3"
   },
   "files": [
     "dist"
