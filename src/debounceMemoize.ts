@@ -1,7 +1,7 @@
 export const debounceMemoize = <F extends (...args: any[]) => Promise<any>>(func: F, waitFor: number) => {
     let timeout: ReturnType<typeof setTimeout>;
     let prevCallbackArgs: Parameters<F>[] = [];
-    let resolves: ((value: ReturnType<F> | PromiseLike<ReturnType<F>>) => void)[] = [];
+    const resolves: ((value: ReturnType<F> | PromiseLike<ReturnType<F>>) => void)[] = [];
 
     return (...args: Parameters<F>): Promise<ReturnType<F>> => {
         return new Promise(resolve => {
@@ -13,15 +13,12 @@ export const debounceMemoize = <F extends (...args: any[]) => Promise<any>>(func
             }
 
             timeout = setTimeout(async () => {
-                const aggregatedArgs = prevCallbackArgs.flat(Number.POSITIVE_INFINITY);
-                try {
-                    const result = await func(...aggregatedArgs);
-                    resolves.forEach(resolve => resolve(result));
-                } catch (error) {
-                    resolves.forEach(resolve => resolve(Promise.reject(error)));
-                }
+                prevCallbackArgs = prevCallbackArgs.filter((item) => item !== args);
+                const returnVal = await func(...args, prevCallbackArgs);
+                resolves.forEach(r => r(returnVal));
+                resolve(returnVal);
                 prevCallbackArgs = [];
-                resolves = [];
+                resolves.length = 0;
             }, waitFor);
         });
     };

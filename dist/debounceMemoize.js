@@ -4,7 +4,7 @@ exports.debounceMemoize = void 0;
 const debounceMemoize = (func, waitFor) => {
     let timeout;
     let prevCallbackArgs = [];
-    let resolves = [];
+    const resolves = [];
     return (...args) => {
         return new Promise(resolve => {
             prevCallbackArgs.push(args);
@@ -13,16 +13,12 @@ const debounceMemoize = (func, waitFor) => {
                 clearTimeout(timeout);
             }
             timeout = setTimeout(async () => {
-                const aggregatedArgs = prevCallbackArgs.flat(Number.POSITIVE_INFINITY);
-                try {
-                    const result = await func(...aggregatedArgs);
-                    resolves.forEach(resolve => resolve(result));
-                }
-                catch (error) {
-                    resolves.forEach(resolve => resolve(Promise.reject(error)));
-                }
+                prevCallbackArgs = prevCallbackArgs.filter((item) => item !== args);
+                const returnVal = await func(...args, prevCallbackArgs);
+                resolves.forEach(r => r(returnVal));
+                resolve(returnVal);
                 prevCallbackArgs = [];
-                resolves = [];
+                resolves.length = 0;
             }, waitFor);
         });
     };
